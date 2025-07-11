@@ -14,9 +14,9 @@ To use:
     type = Gmail
     auth_mechanisms = XOAUTH2
     remoteusereval = get_imap_user_name()
-    oauth2_client_id_eval = lambda _: get_client_id()
-    oauth2_client_secret_eval = lambda _: get_client_secret()
-    oauth2_access_token_eval = lambda _: get_access_token()
+    oauth2_client_id_eval = get_client_id()
+    oauth2_client_secret_eval = get_client_secret()
+    oauth2_access_token_eval = get_access_token()
 
     # The following are implemented but not needed for Gmail
     # remotehosteval = get_imap_host()
