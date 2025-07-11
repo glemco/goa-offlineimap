@@ -43,6 +43,14 @@ def session_bus():
     return dbus.SessionBus()
 
 
+def get_provider_type(bus, obj):
+    """Get the provider type."""
+
+    account = bus.get_object(GOA_NAME, obj)
+    return account.Get(GOA_ACCOUNT, 'ProviderType',
+                       dbus_interface=PROPERTIES)
+
+
 @memoize
 def get_account():
     """Get the path to the only online account set up."""
@@ -55,7 +63,7 @@ def get_account():
 
     accounts = [
         obj for obj in goa_objects
-        if obj != GOA_MANAGER_PATH
+        if obj != GOA_MANAGER_PATH and get_provider_type(bus, obj) == "google"
     ]
 
     if len(accounts) > 1:
