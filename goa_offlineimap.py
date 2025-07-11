@@ -1,3 +1,5 @@
+#! /usr/bin/python3
+
 """Get the credentials for offlineimap from GNOME Online Accounts."""
 
 from __future__ import print_function
@@ -105,3 +107,10 @@ def get_access_token():
     account.EnsureCredentials(dbus_interface=GOA_ACCOUNT)
     access_token, _ = account.GetAccessToken(dbus_interface=GOA_ACCOUNT_OAUTH2)
     return str(access_token)
+
+if __name__ == "__main__":
+    print(get_imap_host())
+    print(get_imap_user_name())
+    print(get_client_id())
+    print(get_client_secret())
+    print(get_access_token())
